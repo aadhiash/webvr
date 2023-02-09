@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="gestures.js"></script>
+    <style>
+      #linkedin-button {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        width: 200px;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc: https://cdn.glitch.global/95ce50c5-5957-4b1f-b6fe-c8f941093348/globe.mind?v=1661366410280;"
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true;"
+      gesture-detector
+      device-orientation-permission-ui="enabled: true"
+      raycaster="objects: .clickable"
+      emitevents="true"
+      cursor="fuse: false; rayOrigin: mouse;"
+    >
+      <a-assets>
+        <a-asset-item
+          id="airduct"
+          src="https://cdn.glitch.global/95ce50c5-5957-4b1f-b6fe-c8f941093348/scene.glb?v=1660468872462"
+        ></a-asset-item>
+        <a-asset-item
+          id="markerless"
+          src="https://cdn.glitch.global/95ce50c5-5957-4b1f-b6fe-c8f941093348/home.glb?v=1668999227488"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-gltf-model
+          rotation="0 0 0 "
+          position="0 0 0.1"
+          scale="0.05 0.05 0.05"
+          src="#airduct"
+          animation-mixer
+          object-detection
+          gesture-handler="minScale: 0.5; maxScale: 10; locationBased: true;"
+        >
+        </a-gltf-model>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-gltf-model
+          rotation="0 0 0 "
+          position="0 0 0.1"
+          scale="0.05 0.05 0.05"
+          src="#markerless"
+          animation-mixer
+          object-detection
+          gesture-handler="minScale: 0.5; maxScale: 10; locationBased: true;"
+        >
+        </a-gltf-model>
+      </a-entity>
+    </a-scene>
+    <button id="linkedin-button">View My LinkedIn Profile</button>
+    <script>
+      document.getElementById("linkedin-button").ontouchstart = function () {
+        window.location.href = "https://www.linkedin.com/in/aadhiash/";
+        console.log("clicked");
+      };
+    </script>
+  </body>
+</html>
