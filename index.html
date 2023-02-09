@@ -8,19 +8,10 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
     <script src="gestures.js"></script>
-    <style>
-      #linkedin-button {
-        position: absolute;
-        bottom: 100px;
-        left: 50%;
-        width: 200px;
-        transform: translateX(-50%);
-      }
-    </style>
   </head>
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: https://cdn.glitch.global/95ce50c5-5957-4b1f-b6fe-c8f941093348/globe.mind?v=1661366410280;"
+      mindar-image="imageTargetSrc: https://cdn.glitch.global/eed14174-20a3-4b38-bad8-7d8cb3fb66f6/boschiotresume.mind?v=1675965266053"
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true;"
       gesture-detector
@@ -32,7 +23,7 @@
       <a-assets>
         <a-asset-item
           id="airduct"
-          src="https://cdn.glitch.global/95ce50c5-5957-4b1f-b6fe-c8f941093348/scene.glb?v=1660468872462"
+          src="https://cdn.glitch.global/eed14174-20a3-4b38-bad8-7d8cb3fb66f6/resumeboxy.glb?v=1675970332365"
         ></a-asset-item>
         <a-asset-item
           id="markerless"
@@ -67,12 +58,5 @@
         </a-gltf-model>
       </a-entity>
     </a-scene>
-    <button id="linkedin-button">View My LinkedIn Profile</button>
-    <script>
-      document.getElementById("linkedin-button").ontouchstart = function () {
-        window.location.href = "https://www.linkedin.com/in/aadhiash/";
-        console.log("clicked");
-      };
-    </script>
   </body>
 </html>
